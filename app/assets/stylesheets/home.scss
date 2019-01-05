@@ -1,0 +1,16 @@
+.isu-header {
+  height: 8rem;
+  align-items: center;
+  display: flex;
+  background-color: black;
+  color: white;
+
+  .logo {
+    font-size: 50px;
+  }
+
+  .slogan {
+    font-size: 14px;
+    line-height: 15px;
+  }
+}
