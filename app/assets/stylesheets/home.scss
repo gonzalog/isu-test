@@ -1,3 +1,5 @@
+$secondary-color: #5c775c;
+
 .isu-header {
   height: 8rem;
   align-items: center;
@@ -12,5 +14,49 @@
   .slogan {
     font-size: 14px;
     line-height: 15px;
+    align-items: center;
+    display: flex;
+    padding-left: 2rem;
+  }
+
+  .logo, .slogan {
+
+  }
+}
+
+.section-header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  .section-title {
+    font-size: 25px;
+  }
+
+  .description {
+    font-size: 12px;
+    color: $secondary-color;
+  }
+}
+
+.section-body {
+  background-color: rgb(239, 239, 240);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  min-height: 50rem;
+
+  .container {
+    padding: 1rem;
+    height: 100%;
+    background-color: white;
+
+    .sorting-select-column {
+      display: flex;
+      color: $secondary-color;
+      i {
+        font-size: 25px;
+        margin: auto;
+        padding-right: 10px;
+      }
+    }
   }
 }

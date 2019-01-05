@@ -1,0 +1,16 @@
+var reservationsApp = angular.module('reservationsApp', [
+  'ngRoute',
+  'reservationsControllers'
+]);
+
+reservationsApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider
+      .when('/reservations', {
+        templateUrl: "<%= path_to_asset('reservations.html') %>",
+        controller: 'ReservationsController'
+      })
+      .otherwise({
+        redirectTo: '/reservations'
+      });
+  }]);
