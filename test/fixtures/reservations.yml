@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  contact: one
+  date: 2019-01-05
+  ranking: 1
+  favorite: false
+
+two:
+  description: MyText
+  contact: two
+  date: 2019-01-05
+  ranking: 1
+  favorite: false
