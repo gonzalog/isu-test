@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_001013) do
+ActiveRecord::Schema.define(version: 2019_01_06_003220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contact_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.date "birthdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "contact_type_id"
+    t.index ["contact_type_id"], name: "index_contacts_on_contact_type_id"
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.text "description"
@@ -22,8 +38,12 @@ ActiveRecord::Schema.define(version: 2019_01_06_001013) do
     t.boolean "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "contact_id"
+    t.index ["contact_id"], name: "index_reservations_on_contact_id"
     t.index ["date"], name: "index_reservations_on_date"
     t.index ["ranking"], name: "index_reservations_on_ranking"
   end
 
+  add_foreign_key "contacts", "contact_types"
+  add_foreign_key "reservations", "contacts"
 end
