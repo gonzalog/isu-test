@@ -1,6 +1,9 @@
 var reservationsApp = angular.module('reservationsApp', [
   'ngRoute',
-  'reservationsControllers'
+  'ngMaterial',
+  'reservationsControllers',
+  'reservationsServices',
+  'reservationsDirectives'
 ]);
 
 reservationsApp.config(['$routeProvider',
@@ -9,6 +12,18 @@ reservationsApp.config(['$routeProvider',
       .when('/reservations', {
         templateUrl: "<%= path_to_asset('reservations.html') %>",
         controller: 'ReservationsController'
+      })
+      .when('/new_reservation', {
+        templateUrl: "<%= path_to_asset('edit_reservation.html') %>",
+        controller: 'NewReservationController'
+      })
+      .when('/reservation/:reservation_id', {
+        templateUrl: "<%= path_to_asset('edit_reservation.html') %>",
+        controller: 'EditReservationController'
+      })
+      .when('/contact/:contact_id', {
+        templateUrl: "<%= path_to_asset('edit_contact.html') %>",
+        controller: 'EditContactController'
       })
       .otherwise({
         redirectTo: '/reservations'

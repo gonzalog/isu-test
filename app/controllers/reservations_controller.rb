@@ -32,6 +32,26 @@ class ReservationsController < ApplicationController
     render json: { error: e.message }, status: 400
   end
 
+  def sortings
+    render json: [
+      {
+        description: "By Date Ascending"
+      },
+      {
+        description: "By Date Descending"
+      },
+      {
+        description: "By Alphabetic Ascending"
+      },
+      {
+        description: "By Alphabetic Descending"
+      },
+      {
+        description: "By Ranking"
+      }
+    ]
+  end
+
   private
   def current_reservation
     @current_reservation ||= Reservation.find(params[:id])

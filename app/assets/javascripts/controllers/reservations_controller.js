@@ -1,20 +1,4 @@
-reservationsControllers.controller('ReservationsController', ['$scope',
-  function($scope) {
-    $scope.sortings = [
-      {
-        description: "By Date Ascending"
-      },
-      {
-        description: "By Date Descending"
-      },
-      {
-        description: "By Alphabetic Ascending"
-      },
-      {
-        description: "By Alphabetic Descending"
-      },
-      {
-        description: "By Ranking"
-      }
-    ];
+reservationsControllers.controller('ReservationsController', ['$scope', 'Sorting',
+  function($scope, Sorting) {
+    Sorting.getAll().then(results => $scope.sortings = results)
   }]);

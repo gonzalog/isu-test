@@ -1,0 +1,51 @@
+<section-header>
+  <div class="row">
+    <div class="col-md-3">
+      <p class="section-title">
+        {{ sectionTitle }}
+      </p>
+    </div>
+    <div class="col-md-9 description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor accumsan quam at venenatis. Vestibulum semper pellentesque magna in venenatis. Nam semper scelerisque nulla, ut interdum velit faucibus et.
+    </div>
+  </div>
+</section-header>
+<div class="section-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <md-autocomplete
+          md-selected-item="selectedContact"
+          md-search-text="contactName"
+          md-items="item in getContactSuggestions()"
+          md-item-text="item.name">
+          <span md-highlight-text="contactName">
+            {{item.name}}
+          </span>
+        </md-autocomplete>
+      </div>
+      <div class="col-md-3">
+        <md-select id="contactTypeSelector" ng-model="contactType">
+          <option value="" disabled selected>
+            Contact Type
+          </option>
+          <option ng-repeat="type in contactTypes">
+            {{ type.description }}
+          </option>
+        </md-select>
+      </div>
+      <div class="col-md-3">
+        <md-input-container>
+          <input type="tel" placeholder="Phone" ng-model="contactPhone">
+        </md-input-container>
+      </div>
+      <div class="col-md-3">
+        <md-datepicker
+          ng-model="contactBirthDate"
+          md-placeholder="Birth Date"
+          ng-disabled="loading"
+          md-max-date="today"></md-datepicker>
+      </div>
+    </div>
+  </div>
+</div>
