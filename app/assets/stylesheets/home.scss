@@ -40,14 +40,19 @@ $secondary-color: #5c775c;
 
 .section-body {
   background-color: rgb(239, 239, 240);
-  padding-top: 1.5rem;
+  padding-top: .5rem;
   padding-bottom: 1.5rem;
   min-height: 50rem;
+
+  .contact-data {
+    height: 3.5rem;
+  }
 
   .container {
     padding: 1rem;
     height: 100%;
     background-color: white;
+    margin-top: .5rem;
 
     .sorting-select-column {
       display: flex;

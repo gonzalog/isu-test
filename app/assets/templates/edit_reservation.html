@@ -12,7 +12,7 @@
 </section-header>
 <div class="section-body">
   <div class="container">
-    <div class="row">
+    <div class="row contact-data">
       <div class="col-md-3">
         <md-autocomplete
           md-selected-item="selectedContact"
@@ -45,6 +45,17 @@
           md-placeholder="Birth Date"
           ng-disabled="loading"
           md-max-date="today"></md-datepicker>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <ng-quill-editor
+          class="editor"
+          ng-model="description"
+          placeholder="'Reservation description...'"
+        ></ng-quill-editor>
       </div>
     </div>
   </div>
