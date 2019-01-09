@@ -17,25 +17,25 @@ reservationsServices.factory('Server', ['$http',
         }).then(({ data }) => data)
       },
       PUT: (path, args = {}) => {
-        let params = {
-          ...args
+        let requestData = {
+          ...args.data
         };
 
         return $http({
           url: `${path}.json`,
           method: 'PUT',
-          params: params
+          params: requestData
         }).then(({ data }) => data)
       },
       POST: (path, args = {}) => {
-        let params = {
-          ...args
+        let requestData = {
+          ...args.data
         };
 
         return $http({
           url: `${path}.json`,
           method: 'POST',
-          params: params
+          data: requestData
         }).then(({ data }) => data)
       }
     }
@@ -49,6 +49,7 @@ reservationsServices.factory('Contact', ['Server', (Server) => {
       create: (params) => Server.POST(`/contacts`, { params }),
       suggestions: function(query) {
         return this.getAll({ query });
-      }
+      },
+      getTypes: () => Server.GET('/contact_types') 
     }
   }]);

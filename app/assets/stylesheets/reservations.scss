@@ -14,13 +14,13 @@
     }
   }
 
-  #contactTypeSelector {
+  md-select {
     border: rgba(225, 225, 225, 1) solid 1px;
     height: 3rem;
     margin-top: .25rem;
   }
 
-  md-datepicker {
+  md-datepicker.birthdate-picker {
     width: 100%;
 
     .md-datepicker-button.md-button.md-icon-button {
@@ -57,4 +57,40 @@
       min-height: 15rem;
     }
   }
+
+  .actions-container {
+    background-color: transparent;
+    .action-button {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .md-input-has-value {
+    label {
+      margin-bottom: .75rem;
+    }
+  }
+
+  md-datepicker.reservation-date-datepicker {
+    .md-datepicker-button.md-button.md-icon-button {
+      margin: 0;
+    }
+
+    .md-datepicker-input-container {
+      border: rgba(225, 225, 225, 1) solid 1px;
+      background-color: white;
+
+      input {
+        width: 12rem;
+        height: 3rem;
+        margin-top: .25rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+button.btn {
+  border-radius: 0;
 }

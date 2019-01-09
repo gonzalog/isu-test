@@ -10,24 +10,30 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    render json: current_reservation.as_json
+    render json: current_reservation.as_json(include: :contact)
   end
 
   def create
     raise "Missing reservation description" unless reservation_params[:description]
     raise "Missing reservation date" unless reservation_params[:date]
-    if reservation_params[:contact_id]
-      reservation = Reservation.create!(reservation_params)
-    elsif contact_params
-      contact = Contact.create!(contact_params)
-      params = reservation_params
-      params[:contact_id] = contact.id
-      reservation = Reservation.create!(params)
+    raise "Missing contact" unless reservation_params[:contact]
+
+    if reservation_params[:contact][:id]
+      contact = Contact.find(reservation_params[:contact][:id])
     else
-      raise "Missing reservation contact"
+      contact = Contact.new
     end
 
-    render json: reservation.as_json
+    contact.assign_attributes(reservation_params[:contact].slice(:name, :phone, :birthdate, :type_id))
+    contact.save!
+
+    reservation = Reservation.create!({
+      description: reservation_params[:description],
+      date: reservation_params[:date],
+      contact: contact
+    })
+
+    render json: reservation.as_json(include: :contact)
   rescue e
     render json: { error: e.message }, status: 400
   end
@@ -62,10 +68,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:description, :date, :contact_id)
-  end
-
-  def contact_params
-    params.require(:contact).permit(:name, :contact_type_id, :phone, :birthdate)
+    params.require(:reservation).permit(:description, :date, :contact)
   end
 end
