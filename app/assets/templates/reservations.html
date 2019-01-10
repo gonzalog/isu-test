@@ -32,5 +32,43 @@
         </select>
       </div>
     </div>
+    <table class="table reservations-table">
+      <tbody>
+        <tr ng-repeat="reservation in reservations.items">
+          <td>
+            <div>
+              <strong>
+                {{ reservation.contact.name }}
+              </strong>
+            </div>
+            <small class="secondary-text">
+              {{ formatDate(reservation.date) }}
+            </small>
+          </td>
+          <td>
+            <div>
+              <strong>
+                Ranking
+              </strong>
+            </div>
+            <div class="reservation-ranking">
+              <rating
+                ng-model="reservation.ranking"
+                editable="true"
+                show-grade="true">
+              </rating>
+            </div>
+          </td>
+          <td>
+            {{ reservation.favorite ? 'yes' : 'no' }}
+          </td>
+          <td>
+            <button class="btn btn-secondary float-right" ng-click="onEditClick(reservation)">
+              EDIT
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

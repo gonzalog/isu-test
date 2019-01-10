@@ -110,8 +110,36 @@ $secondary-color: #5c775c;
       }
     }
   }
+
+  .reservations-table {
+    margin-top: 2rem;
+    border-collapse: separate;
+    border-spacing: 0 1em;
+    tr {
+      background-color: rgb(239, 239, 240);
+      td {
+        border: none;
+        vertical-align: middle;
+      }
+    }
+  }
 }
 
 button.btn {
   border-radius: 0;
+}
+
+.secondary-text {
+  color: $secondary-color;
+}
+
+.rating-options {
+  .rating-option {
+    color: $secondary-color;
+    cursor: pointer;
+
+    &.active {
+      color: rgba(255, 230, 127, 1);
+    }
+  }
 }

@@ -3,9 +3,11 @@ class ReservationsController < ApplicationController
     results = Reservation.all.page(index_params[:page])
 
     render json: {
-      items: results.as_json,
+      items: results.as_json(include: :contact, except: :description),
       next_page: results.next_page,
-      prev_page: results.prev_page
+      prev_page: results.prev_page,
+      total_pages: results.total_pages,
+      current_page: results.current_page
     }
   end
 
