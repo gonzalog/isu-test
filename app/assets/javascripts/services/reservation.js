@@ -1,6 +1,6 @@
 reservationsServices.factory('Reservation', ['Server', (Server) => {
     return {
-      getAll: params => Server.GET('/reservations', params),
+      getAll: params => Server.GET('/reservations', { params }),
       get: id => Server.GET(`/reservations/${id}`),
       update: (data) => Server.PUT(`/reservations/${data.id}`, { data }),
       create: (data) => Server.POST(`/reservations`, { data }),

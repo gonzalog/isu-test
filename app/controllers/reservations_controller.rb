@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def index
-    results = Reservation.order(:id).page(index_params[:page])
+    results = Reservation.order_by(index_params[:sorting_id]).page(index_params[:page])
 
     render json: {
       items: results.as_json(include: :contact, except: :description),
@@ -65,23 +65,7 @@ class ReservationsController < ApplicationController
   end
 
   def sortings
-    render json: [
-      {
-        description: "By Date Ascending"
-      },
-      {
-        description: "By Date Descending"
-      },
-      {
-        description: "By Alphabetic Ascending"
-      },
-      {
-        description: "By Alphabetic Descending"
-      },
-      {
-        description: "By Ranking"
-      }
-    ]
+    render json: Reservation.sorting_descriptions
   end
 
   private
@@ -90,7 +74,7 @@ class ReservationsController < ApplicationController
   end
 
   def index_params
-    params.permit(:search, :page)
+    params.permit(:search, :page, :sorting_id)
   end
 
   def contact_params

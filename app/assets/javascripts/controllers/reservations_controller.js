@@ -3,12 +3,19 @@ reservationsControllers.controller('ReservationsController', ['$scope', '$locati
     Sorting.getAll().then(results => $scope.sortings = results)
 
     $scope.loadReservations = (page) => {
-      Reservation.getAll({ page }).then((result) => {
+      params = { page };
+      if ($scope.selectedSorting) {
+        params.sorting_id = $scope.selectedSorting.id;
+      }
+      Reservation.getAll(params).then((result) => {
         $scope.reservations = result;
       });
     }
 
-    $scope.loadReservations(1);
+    $scope.sortingSelected = () => {
+      let page = $scope.reservations && $scope.reservations.current_page 
+      $scope.loadReservations(page || 1);
+    }
 
     $scope.onEditClick = ({ id }) => $location.path(`/reservation/${id}`);
 
