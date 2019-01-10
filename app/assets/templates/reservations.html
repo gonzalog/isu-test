@@ -51,13 +51,10 @@
                 Ranking
               </strong>
             </div>
-            <div class="reservation-ranking">
-              <rating
-                ng-model="reservation.ranking"
-                editable="true"
-                show-grade="true">
-              </rating>
-            </div>
+            <rating
+              ng-model="reservation.ranking"
+              ng-change="rankingChange(reservation.id, rating)"
+            ></rating>
           </td>
           <td>
             {{ reservation.favorite ? 'yes' : 'no' }}

@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def index
-    results = Reservation.all.page(index_params[:page])
+    results = Reservation.order(:id).page(index_params[:page])
 
     render json: {
       items: results.as_json(include: :contact, except: :description),
@@ -43,22 +43,21 @@ class ReservationsController < ApplicationController
   end
 
   def update
-    if contact_params[:id]
-      contact = Contact.find(contact_params[:id])
-      if contact
-        contact.update_attributes!(contact_params.except(:id))
-      else
-        raise "Contact not found with id: #{contact_params[:id]}"
-      end
-    else
-      if contact_params.empty?
-        contact = current_reservation.contact
+    if params[:contact]
+      if contact_params[:id]
+        contact = Contact.find(contact_params[:id])
+        if contact
+          contact.update_attributes!(contact_params.except(:id))
+        else
+          raise "Contact not found with id: #{contact_params[:id]}"
+        end
       else
         contact = Contact.create!(contact_params)
       end
+      current_reservation.update_attributes!(reservation_params.merge(contact: contact))
+    else
+      current_reservation.update_attributes!(reservation_params)
     end
-
-    current_reservation.update_attributes!(reservation_params.merge(contact: contact))
 
     render json: current_reservation.as_json(include: :contact)
   rescue => e
