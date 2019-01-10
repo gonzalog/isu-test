@@ -16,16 +16,18 @@ class ReservationsController < ApplicationController
   def create
     raise "Missing reservation description" unless reservation_params[:description]
     raise "Missing reservation date" unless reservation_params[:date]
-    raise "Missing contact" unless reservation_params[:contact]
+    raise "Missing contact" if contact_params.empty?
 
-    if reservation_params[:contact][:id]
-      contact = Contact.find(reservation_params[:contact][:id])
+    if contact_params[:id]
+      contact = Contact.find(contact_params[:id])
+      if contact
+        contact.update_attributes!(contact_params.except(:id))
+      else
+        raise "Contact not found with id: #{contact_params[:id]}"
+      end
     else
-      contact = Contact.new
+      contact = Contact.create!(contact_params)
     end
-
-    contact.assign_attributes(reservation_params[:contact].slice(:name, :phone, :birthdate, :type_id))
-    contact.save!
 
     reservation = Reservation.create!({
       description: reservation_params[:description],
@@ -34,7 +36,30 @@ class ReservationsController < ApplicationController
     })
 
     render json: reservation.as_json(include: :contact)
-  rescue e
+  rescue => e
+    render json: { error: e.message }, status: 400
+  end
+
+  def update
+    if contact_params[:id]
+      contact = Contact.find(contact_params[:id])
+      if contact
+        contact.update_attributes!(contact_params.except(:id))
+      else
+        raise "Contact not found with id: #{contact_params[:id]}"
+      end
+    else
+      if contact_params.empty?
+        contact = current_reservation.contact
+      else
+        contact = Contact.create!(contact_params)
+      end
+    end
+
+    current_reservation.update_attributes!(reservation_params.merge(contact: contact))
+
+    render json: current_reservation.as_json(include: :contact)
+  rescue => e
     render json: { error: e.message }, status: 400
   end
 
@@ -67,7 +92,11 @@ class ReservationsController < ApplicationController
     params.permit(:search, :page)
   end
 
+  def contact_params
+    params.require(:contact).permit(:id, :name, :birthdate, :contact_type_id, :phone)
+  end
+
   def reservation_params
-    params.require(:reservation).permit(:description, :date, :contact)
+    params.permit(:description, :date, :ranking, :favorite)
   end
 end

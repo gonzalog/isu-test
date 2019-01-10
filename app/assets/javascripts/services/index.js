@@ -7,7 +7,7 @@ reservationsServices.factory('Server', ['$http',
     return {
       GET: (path, args = {}) => {
         let params = {
-          ...args
+          ...args.params
         };
 
         return $http({
@@ -24,7 +24,7 @@ reservationsServices.factory('Server', ['$http',
         return $http({
           url: `${path}.json`,
           method: 'PUT',
-          params: requestData
+          data: requestData
         }).then(({ data }) => data)
       },
       POST: (path, args = {}) => {

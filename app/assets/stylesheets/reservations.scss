@@ -1,3 +1,5 @@
+$secondary-color: #5c775c;
+
 .section-body {
   md-input-container {
     width: 100%;
@@ -8,6 +10,11 @@
       margin-top: -1rem;
     }
 
+    &.md-input-focused, &.md-input-invalid {
+      input, input.ng-invalid {
+        border-width: 1px;
+      }
+    }
 
     label:not(.md-no-float):not(.md-container-ignore), md-input-container .md-placeholder {
       padding-left: 1rem;
@@ -52,6 +59,20 @@
     height: 3rem;
   }
 
+  .contact-data-col {
+    display: flex;
+    md-select, md-autocomplete {
+      width: 100%;
+    }
+    i {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: .75rem;
+      margin-left: .75rem;
+      color: $secondary-color;
+    }
+  }
+
   .editor {
     .ql-container {
       min-height: 15rem;
@@ -66,7 +87,7 @@
     }
   }
 
-  .md-input-has-value {
+  .md-input-has-value, .md-input-focused {
     label {
       margin-bottom: .75rem;
     }

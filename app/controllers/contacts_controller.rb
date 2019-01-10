@@ -10,7 +10,11 @@ class ContactsController < ApplicationController
   end
 
   def search_results
-    Contact.where("contacts.name ~* :query", query: index_params[:query])
+    if index_params[:query]
+      Contact.where("contacts.name ~* :query", query: index_params[:query])
+    else
+      Contact.all
+    end
   end
 
   private

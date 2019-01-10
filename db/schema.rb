@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_003220) do
+ActiveRecord::Schema.define(version: 2019_01_10_003911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_003220) do
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "phone"
-    t.date "birthdate"
+    t.datetime "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "contact_type_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_003220) do
 
   create_table "reservations", force: :cascade do |t|
     t.text "description"
-    t.date "date"
+    t.datetime "date"
     t.integer "ranking"
     t.boolean "favorite"
     t.datetime "created_at", null: false
