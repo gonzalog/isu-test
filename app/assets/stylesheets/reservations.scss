@@ -1,4 +1,5 @@
 $secondary-color: #5c775c;
+$invalid: #ada397;
 
 .section-body {
   md-input-container {
@@ -120,6 +121,32 @@ $secondary-color: #5c775c;
       td {
         border: none;
         vertical-align: middle;
+      }
+    }
+  }
+
+  .add-favorites-button {
+    display: flex;
+    cursor: pointer;
+
+    .legend {
+      margin-top: auto;
+      margin-bottom: auto;
+      font-family: Verdana, Geneva, sans-serif;
+    }
+
+    i {
+      padding-left: .25em;
+      color: $invalid;
+    }
+
+    &.favorite {
+      .legend {
+        color: $invalid;
+      }
+
+      i {
+        color: red;
       }
     }
   }

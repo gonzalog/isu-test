@@ -20,4 +20,19 @@ reservationsControllers.controller('ReservationsController', ['$scope', '$locati
         ranking: ranking
       })
     }
+
+    let favoritesLoading = {};
+    $scope.onFavoriteClick = (reservation) => {
+      if (!favoritesLoading[reservation.id]) {
+        favoritesLoading[reservation.id] = true;
+        Reservation.update({
+          id: reservation.id,
+          favorite: !reservation.favorite
+        }).then(({ favorite }) => {
+          favoritesLoading[reservation.id] = false;
+          reservation.favorite = favorite;
+        });
+      }
+    }
+
   }]);

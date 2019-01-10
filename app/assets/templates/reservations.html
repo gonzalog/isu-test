@@ -57,7 +57,15 @@
             ></rating>
           </td>
           <td>
-            {{ reservation.favorite ? 'yes' : 'no' }}
+            <div
+              class="float-right add-favorites-button"
+              ng-class="{ favorite: reservation.favorite }"
+              ng-click="onFavoriteClick(reservation)">
+              <strong class="legend">
+                Add Favorites
+              </strong>
+              <i class="far fa-heart fa-2x"></i>
+            </div>
           </td>
           <td>
             <button class="btn btn-secondary float-right" ng-click="onEditClick(reservation)">
