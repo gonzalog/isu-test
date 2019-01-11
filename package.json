@@ -6,6 +6,7 @@
     "angular-animate": "1.6.4",
     "angular-aria": "1.6.4",
     "angular-material": "1.1.12",
+    "angular-material-time-picker": "^1.0.8",
     "angular-messages": "^1.7.0",
     "angular-resource": "1.6.4",
     "angular-route": "1.6.4",

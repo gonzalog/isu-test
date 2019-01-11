@@ -92,14 +92,22 @@
   </div>
   <div class="container actions-container">
     <div class="row">
-      <div class="col-md-10">
-        <md-datepicker
-          class="float-right reservation-date-datepicker"
-          required
-          ng-model="reservation.date"
-          md-placeholder="Reservation Date"
-          md-min-date="today">
-        </md-datepicker>
+      <div class="col-md-10 date-time-picker">
+        <div class="row float-right">
+          <md-datepicker
+            class="reservation-date-datepicker"
+            required
+            ng-model="reservation.date"
+            md-placeholder="Reservation Date"
+            md-min-date="today">
+          </md-datepicker>
+          <md-time-picker
+            class="reservation-time-picker"
+            ng-model="reservation.date"
+            mandatory="required"
+            no-meridiem>
+          </md-time-picker>
+        </div>
       </div>
       <div class="col-md-2">
         <button type="button" class="btn btn-danger float-right action-button" ng-click="onSendClick()" ng-disabled="!readyToSend()">

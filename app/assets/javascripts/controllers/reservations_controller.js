@@ -12,7 +12,7 @@ reservationsControllers.controller('ReservationsController', ['$scope', '$locati
 
     $scope.onEditClick = ({ id }) => $location.path(`/reservation/${id}`);
 
-    $scope.formatDate = (date) => moment(date).format('dddd MMM D [at] h:mm:ss a');
+    $scope.formatDate = (date) => moment(date).format('dddd MMM D [at] h:mm a');
 
     $scope.rankingChange = (id, ranking) => {
       Reservation.update({
