@@ -42,4 +42,8 @@ reservationsControllers.controller('ReservationsController', ['$scope', '$locati
       }
     }
 
+    $scope.onPageClick = (page) => {
+      console.log(page)
+    }
+
   }]);
