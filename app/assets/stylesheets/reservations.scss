@@ -63,6 +63,7 @@ $invalid: #ada397;
 
   .contact-data-col {
     display: flex;
+    padding-left: 1.5rem;
     md-select, md-autocomplete {
       width: 100%;
     }
@@ -70,9 +71,13 @@ $invalid: #ada397;
       margin-top: auto;
       margin-bottom: auto;
       margin-right: .75rem;
-      margin-left: .75rem;
       color: $secondary-color;
     }
+  }
+
+  .list-button-col {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .editor {

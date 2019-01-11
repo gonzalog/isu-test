@@ -48,7 +48,7 @@
             </span>
         </md-autocomplete>
       </div>
-      <div class="col-md-3 contact-data-col">
+      <div class="col-md-2 contact-data-col">
         <i class='fas fa-globe'></i>
         <md-select
           required
@@ -77,7 +77,15 @@
           md-max-date="today">
         </md-datepicker>
       </div>
+      <div class="col-md-1 list-button-col">
+        <button class="btn btn-secondary " ng-click="showContactsList = !showContactsList">
+          LIST
+        </button>
+      </div>
     </div>
+  </div>
+  <div class="container" ng-if="showContactsList">
+    <contacts-table/>
   </div>
   <div class="container">
     <div class="row">
