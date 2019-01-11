@@ -20,7 +20,7 @@ reservationsDirectives.directive('contactsTable', () => {
   return {
     restrict: 'E',
     transclude: true,
-    controller: ['$scope', 'Contact', ($scope, Contact) => {
+    controller: ['$scope', '$location', 'Contact', ($scope, $location, Contact) => {
       let currentParams = {
         page: 1
       };
@@ -44,7 +44,7 @@ reservationsDirectives.directive('contactsTable', () => {
       }
 
       $scope.onEditClick = (contact) => {
-        $location.path(`/edit_contact/${contact.id}`);
+        $location.path(`/contact/${contact.id}`);
       }
 
       $scope.formatDate = (date) => {
@@ -63,7 +63,7 @@ reservationsDirectives.directive('contactsTable', () => {
             <th class="col-header" scope="col" ng-click="onColumnClick('name')">
               Name
               <span ng-show="desc.name !== undefined">
-                <i class="fas" ng-class="{ 'fa-sort-up': desc.name, 'fa-sort-down': !desc.name }"></i>
+                <i class="fas" ng-class="{ 'fa-sort-down': desc.name, 'fa-sort-up': !desc.name }"></i>
               </span>
               <span ng-hide="desc.name !== undefined">
                 <i class="fas fa-sort"></i>
@@ -72,7 +72,7 @@ reservationsDirectives.directive('contactsTable', () => {
             <th class="col-header" scope="col" ng-click="onColumnClick('contact_type_id')">
               Type
               <span ng-show="desc.contact_type_id !== undefined">
-                <i class="fas" ng-class="{ 'fa-sort-up': desc.contact_type_id, 'fa-sort-down': !desc.contact_type_id }"></i>
+                <i class="fas" ng-class="{ 'fa-sort-down': desc.contact_type_id, 'fa-sort-up': !desc.contact_type_id }"></i>
               </span>
               <span ng-hide="desc.contact_type_id !== undefined">
                 <i class="fas fa-sort"></i>
@@ -81,7 +81,7 @@ reservationsDirectives.directive('contactsTable', () => {
             <th class="col-header" scope="col" ng-click="onColumnClick('phone')">
               Phone
               <span ng-show="desc.phone !== undefined">
-                <i class="fas" ng-class="{ 'fa-sort-up': desc.phone, 'fa-sort-down': !desc.phone }"></i>
+                <i class="fas" ng-class="{ 'fa-sort-down': desc.phone, 'fa-sort-up': !desc.phone }"></i>
               </span>
               <span ng-hide="desc.phone !== undefined">
                 <i class="fas fa-sort"></i>
@@ -90,13 +90,13 @@ reservationsDirectives.directive('contactsTable', () => {
             <th class="col-header" scope="col" ng-click="onColumnClick('birthdate')">
               Birthdate
               <span ng-show="desc.birthdate !== undefined">
-                <i class="fas" ng-class="{ 'fa-sort-up': desc.birthdate, 'fa-sort-down': !desc.birthdate }"></i>
+                <i class="fas" ng-class="{ 'fa-sort-down': desc.birthdate, 'fa-sort-up': !desc.birthdate }"></i>
               </span>
               <span ng-hide="desc.birthdate !== undefined">
                 <i class="fas fa-sort"></i>
               </span>
             </th>
-            <th class="col-header" scope="col">
+            <th scope="col">
               Options
             </th>
           </tr>

@@ -212,3 +212,15 @@ select {
 .form-control {
   border-radius: 0;
 }
+
+.container.contact-edit-form {
+  width: 50%;
+  .send-button {
+    margin-left: auto;
+    margin-top: 2rem;
+  }
+
+  .delete-button {
+    margin-top: 2rem;
+  }
+}

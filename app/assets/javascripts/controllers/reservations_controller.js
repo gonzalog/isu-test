@@ -1,5 +1,10 @@
-reservationsControllers.controller('ReservationsController', ['$scope', '$location', 'Sorting', 'Reservation',
-  function($scope, $location, Sorting, Reservation) {
+reservationsControllers.controller('ReservationsController', ['$scope', '$location', 'Sorting', 'Reservation', '$rootScope',
+  function($scope, $location, Sorting, Reservation, $rootScope) {
+    if ($rootScope.notificationMessage) {
+      $scope.notificationMessage = $rootScope.notificationMessage;
+      $rootScope.notificationMessage = null;
+    }
+
     Sorting.getAll().then(results => $scope.sortings = results)
 
     $scope.loadReservations = (page) => {

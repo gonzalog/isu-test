@@ -11,6 +11,32 @@ class ContactsController < ApplicationController
     }
   end
 
+  def update
+    current_contact.update!(contact_params)
+    render json: current_contact.as_json(include: :contact_type)
+  rescue => e
+    render json: { error: e.message }, status: 400
+  end
+
+  def show
+    render json: current_contact.as_json(include: :contact_type)
+  end
+
+  def destroy
+    current_contact.destroy!
+    render body: nil, status: :no_content
+  rescue => e
+    render json: { error: e.message }, status: 400
+  end
+
+  def create
+    contact = Contact.create!(contact_params)
+    render json: contact.as_json(include: :contact_type)
+  rescue => e
+    render json: { error: e.message }, status: 400
+  end
+
+  private
   def ordered_results
     way = index_params[:desc] == 'true' ? :desc : :asc
     if index_params[:order_by]
@@ -28,8 +54,15 @@ class ContactsController < ApplicationController
     end
   end
 
-  private
   def index_params
     params.permit(:query, :page, :order_by, :desc)
+  end
+
+  def current_contact
+    @current_contact ||= Contact.find(params[:id])
+  end
+
+  def contact_params
+    params.permit(:name, :phone, :contact_type_id, :birthdate)
   end
 end

@@ -23,7 +23,11 @@ reservationsApp.config(['$routeProvider',
         templateUrl: "<%= path_to_asset('edit_reservation.html') %>",
         controller: 'EditReservationController'
       })
-      .when('/contact/:contact_id', {
+      .when('/new_contact', {
+        templateUrl: "<%= path_to_asset('edit_contact.html') %>",
+        controller: 'NewContactController'
+      })
+      .when('/contact/:id', {
         templateUrl: "<%= path_to_asset('edit_contact.html') %>",
         controller: 'EditContactController'
       })

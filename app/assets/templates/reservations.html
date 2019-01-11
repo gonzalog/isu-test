@@ -5,19 +5,46 @@
         Reservations List
       </strong>
     </div>
-    <div class="col-md-5 description">
+    <div class="col-md-6 description">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor accumsan quam at venenatis. Vestibulum semper pellentesque magna in venenatis. Nam semper scelerisque nulla, ut interdum velit faucibus et.
     </div>
-    <div class="col-md-4">
-      <a href="#!/new_reservation">
-        <button type="button" class="btn btn-secondary float-right">
-          CREATE RESERVATION
-        </button>
-      </a>
+    <div class="col-md-3">
+      <div class="row">
+        <a href="#!/new_reservation" class="section-header-button">
+          <button type="button" class="btn btn-secondary">
+            CREATE RESERVATION
+          </button>
+        </a>
+      </div>
+      <div class="row">
+        <a href="#!/new_contact" class="section-header-button">
+          <button type="button" class="btn btn-secondary">
+            CREATE CONTACT
+          </button>
+        </a>
+      </div>
     </div>
   </div>
 </section-header>
 <div class="section-body">
+  <div class="container notification-container" ng-if="errorMessage">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ errorMessage }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container notification-container" ng-if="notificationMessage">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ notificationMessage }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-3 sorting-select-column">

@@ -1,0 +1,90 @@
+<section-header>
+  <div class="row">
+    <div class="col-md-3">
+      <p class="section-title">
+        {{ sectionTitle }}
+      </p>
+    </div>
+    <div class="col-md-9 description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor accumsan quam at venenatis. Vestibulum semper pellentesque magna in venenatis. Nam semper scelerisque nulla, ut interdum velit faucibus et.
+    </div>
+  </div>
+</section-header>
+
+<div class="section-body">
+
+  <div class="container notification-container" ng-if="errorMessage">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ errorMessage }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container notification-container" ng-if="notificationMessage">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ notificationMessage }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container contact-edit-form">
+    <div class="row">
+      <md-input-container>
+        <input required type="text" placeholder="Contact Name" ng-model="contact.name">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-select
+        required
+        ng-model="contact.contact_type_id"
+        placeholder="Contact Type">
+        <md-option
+          ng-repeat="type in contactTypes"
+          value={{type.id}}>
+          {{ type.description }}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="row">
+      <md-input-container>
+        <input required type="tel" placeholder="Phone" ng-model="contact.phone">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-datepicker
+        class="birthdate-picker"
+        required
+        ng-model="contact.birthdate"
+        md-placeholder="Birth Date"
+        ng-disabled="loading"
+        md-max-date="today">
+      </md-datepicker>
+    </div>
+    <div class="row">
+      <div class="col-md-6 delete-button">
+        <button
+          type="button"
+          class="btn btn-danger action-button"
+          ng-click="onDeleteClick()"
+          ng-if="contact.id"
+          ng-disabled="loadingDelete">
+          {{ loadingDelete ? 'DELETING...' : 'DELETE' }}
+        </button>
+      </div>
+      <div class="col-md-6 send-button">
+        <button
+          type="button"
+          class="btn btn-success float-right action-button"
+          ng-click="onSendClick()"
+          ng-disabled="!readyToSend()">
+          {{ loading ? 'SENDING...' : 'SEND' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
