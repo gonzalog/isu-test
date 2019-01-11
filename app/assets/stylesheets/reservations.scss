@@ -9,6 +9,7 @@ $invalid: #ada397;
       border: rgba(225, 225, 225, 1) solid 1px;
       height: 3rem;
       margin-top: -1rem;
+      background-color: white;
     }
 
     &.md-input-focused, &.md-input-invalid {
@@ -167,6 +168,29 @@ button.btn {
 
     &.active {
       color: rgba(255, 230, 127, 1);
+    }
+  }
+}
+
+.date-time-picker {
+  padding-right: 2rem;
+
+  md-datepicker, md-time-picker {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  md-time-picker.reservation-time-picker {
+    margin-left: .5rem;
+    height: 3rem;
+    margin-top: 0;
+    button {
+      display: none;
+    }
+
+    input {
+      height: 3.4rem;
+      margin-top: -1.1rem;
     }
   }
 }

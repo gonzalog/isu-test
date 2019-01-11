@@ -3,8 +3,8 @@
 const reservationsControllers = angular.module('reservationsControllers', []);
 
 reservationsControllers.controller('EditReservationController',
-  ['$scope', 'Reservation', '$routeParams', 'Contact', '$rootScope', '$location', '$route', '$window',
-  function($scope, Reservation, $routeParams, Contact, $rootScope, $location, $route, $window) {
+  ['$scope', 'Reservation', '$routeParams', 'Contact', '$rootScope', '$location', '$route', '$window', '$mdpTimePicker',
+  function($scope, Reservation, $routeParams, Contact, $rootScope, $location, $route, $window, $mdpTimePicker) {
     $scope.sectionTitle = "Edit Reservation";
     $scope.today = new Date();
 
@@ -14,7 +14,10 @@ reservationsControllers.controller('EditReservationController',
     }
 
     Reservation.get($routeParams.id).then((result) => {
-      $scope.reservation = result;
+      $scope.reservation = {
+        ...result,
+        date: new Date(result.date)
+      };
       $scope.selectedContact = result.contact;
     })
 

@@ -16,6 +16,8 @@
  *
  *= require quill/dist/quill.snow
  *
+ *= require angular-material-time-picker/dist/md-time-picker.css
+ *
  *= require_tree .
  *= require_self
  */

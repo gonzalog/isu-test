@@ -17,4 +17,7 @@
 //= require 'quill/dist/quill'
 //= require 'ng-quill/dist/ng-quill'
 
+//= require 'angular-messages/angular-messages'
+//= require 'angular-material-time-picker/dist/md-time-picker.js'
+
 //= require 'moment/moment'
