@@ -1,24 +1,24 @@
-# README
+# Simple Reservations App on Ruby on Rails and AngularJS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Use Cases
 
-Things you may want to cover:
+### Reservations List
+![Reservations List](https://i.imgur.com/6qYGNma.gifv)
 
-* Ruby version
+### Create Reservation
+![Create Reservation](https://i.imgur.com/qwaDvAS.gifv)
 
-* System dependencies
+### Edit Reservation
+![Edit Reservation](https://i.imgur.com/xuGrHFV.gifv)
 
-* Configuration
+### Contacts List
+![Contacts List](https://i.imgur.com/nmVjOF0.gifv)
 
-* Database creation
+### Create Contact
+![Create Contact](https://i.imgur.com/AMCgTG8.gifv)
 
-* Database initialization
+### Edit Contact
+![Edit Contact](https://i.imgur.com/x6CfmTz.gifv)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Delete Contact
+![Delete Contact](https://i.imgur.com/HlKbdss.gifv)
