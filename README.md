@@ -3,22 +3,22 @@
 ## Use Cases
 
 ### Reservations List
-![Reservations List](https://i.imgur.com/6qYGNma.gifv)
+![Reservations List](https://i.imgur.com/6qYGNma.gif)
 
 ### Create Reservation
-![Create Reservation](https://i.imgur.com/qwaDvAS.gifv)
+![Create Reservation](https://i.imgur.com/qwaDvAS.gif)
 
 ### Edit Reservation
-![Edit Reservation](https://i.imgur.com/xuGrHFV.gifv)
+![Edit Reservation](https://i.imgur.com/xuGrHFV.gif)
 
 ### Contacts List
-![Contacts List](https://i.imgur.com/nmVjOF0.gifv)
+![Contacts List](https://i.imgur.com/nmVjOF0.gif)
 
 ### Create Contact
-![Create Contact](https://i.imgur.com/AMCgTG8.gifv)
+![Create Contact](https://i.imgur.com/AMCgTG8.gif)
 
 ### Edit Contact
-![Edit Contact](https://i.imgur.com/x6CfmTz.gifv)
+![Edit Contact](https://i.imgur.com/x6CfmTz.gif)
 
 ### Delete Contact
-![Delete Contact](https://i.imgur.com/HlKbdss.gifv)
+![Delete Contact](https://i.imgur.com/HlKbdss.gif)
